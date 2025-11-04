@@ -22,9 +22,11 @@ theme:
     text: Merriweather Sans
     code: Red Hat Mono
   icon:
-    logo: fontawesome/solid/w
+    logo: octicons/beaker/16
   features:
     - navigation.footer
+
+copyright: Copyright &copy; 2025 Bloomberg
 
 markdown_extensions:
   - attr_list
@@ -49,4 +51,3 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
 
   
-copyright: Copyright &copy; 2025 Bloomberg
