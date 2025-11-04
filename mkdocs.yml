@@ -49,3 +49,4 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
 
   
+copyright: Copyright &copy; 2025 Bloomberg
