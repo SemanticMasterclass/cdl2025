@@ -3,21 +3,31 @@ site_url: https://semanticmasterclass.github.io/cdl2025
 theme:
   name: material
   palette:
-    # Dark Mode
-    - scheme: slate
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
       toggle:
-        icon: material/weather-sunny
-        name: Dark mode
-      primary: green
-      accent: deep purple
+        icon: material/brightness-auto
+        name: Switch to light mode
+      primary: light green
+      accent: light green
 
-    # Light Mode
-    - scheme: default
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default 
       toggle:
-        icon: material/weather-night
-        name: Light mode
-      primary: blue
-      accent: deep orange
+        icon: material/brightness-7
+        name: Switch to dark mode
+      primary: light green
+      accent: light green
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+      primary: light green
+      accent: light green
   font:
     text: Merriweather Sans
     code: Red Hat Mono
