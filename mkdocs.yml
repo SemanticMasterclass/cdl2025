@@ -32,7 +32,7 @@ theme:
     text: Merriweather Sans
     code: Red Hat Mono
   icon:
-    logo: octicons/beaker/16
+    logo: material/home
   features:
     - navigation.footer
 
