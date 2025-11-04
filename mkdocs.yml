@@ -8,8 +8,8 @@ theme:
       toggle:
         icon: material/brightness-auto
         name: Switch to light mode
-      primary: light green
-      accent: light green
+      primary: green
+      accent: green
 
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
@@ -17,8 +17,8 @@ theme:
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
-      primary: light green
-      accent: light green
+      primary: green
+      accent: green
 
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
@@ -26,8 +26,8 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to system preference
-      primary: light green
-      accent: light green
+      primary: green
+      accent: green
   font:
     text: Merriweather Sans
     code: Red Hat Mono
