@@ -10,6 +10,22 @@
 <http://example.com/> rdf:type owl:Ontology .
 
 #################################################################
+#    Annotation properties
+#################################################################
+
+###  http://example.com/exhibitEndDate
+ex:exhibitEndDate rdf:type owl:AnnotationProperty .
+
+
+###  http://example.com/exhibitStartDate
+ex:exhibitStartDate rdf:type owl:AnnotationProperty .
+
+
+###  http://example.com/onDate
+ex:onDate rdf:type owl:AnnotationProperty .
+
+
+#################################################################
 #    Object Properties
 #################################################################
 
@@ -51,6 +67,18 @@ ex:establishedOn rdf:type owl:DatatypeProperty ;
                  rdfs:range xsd:dateTime .
 
 
+###  http://example.com/hasAddress
+ex:hasAddress rdf:type owl:DatatypeProperty ;
+              rdfs:domain ex:Company ;
+              rdfs:range xsd:string .
+
+
+###  http://example.com/numberOfEmployees
+ex:numberOfEmployees rdf:type owl:DatatypeProperty ;
+                     rdfs:domain ex:Company ;
+                     rdfs:range xsd:integer .
+
+
 #################################################################
 #    Classes
 #################################################################
@@ -64,7 +92,18 @@ ex:Artist rdf:type owl:Class .
 
 
 ###  http://example.com/Company
-ex:Company rdf:type owl:Class .
+ex:Company rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                        owl:onProperty ex:hasAddress ;
+                                                        owl:hasValue "false"^^xsd:boolean
+                                                      ]
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty ex:numberOfEmployees ;
+                                                        owl:hasValue 0
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] .
 
 
 ###  http://example.com/Historical_Movement
@@ -85,9 +124,69 @@ ex:Person rdf:type owl:Class .
 ex:Premises rdf:type owl:Class .
 
 
+###  http://example.com/Shell_Company
+ex:Shell_Company rdf:type owl:Class ;
+                 rdfs:subClassOf ex:Company .
+
+
 #################################################################
 #    Individuals
 #################################################################
+
+###  http://example.com/art_collector_jane
+ex:art_collector_jane rdf:type owl:NamedIndividual ,
+                               ex:Person ;
+                      rdfs:label "Jane Collector" .
+
+
+###  http://example.com/city_museum
+ex:city_museum rdf:type owl:NamedIndividual ,
+                        ex:Company ;
+               ex:establishedOn "1972-03-15T00:00:00"^^xsd:dateTime ;
+               rdfs:label "City Museum Foundation" .
+
+
+###  http://example.com/claude_monet
+ex:claude_monet rdf:type owl:NamedIndividual ,
+                         ex:Artist ;
+                rdfs:label "Claude Monet" .
+
+
+###  http://example.com/david
+ex:david rdf:type owl:NamedIndividual ,
+                  ex:Artefact ;
+         ex:belongsToHistoricalMovement ex:renaissance ;
+         ex:hasArtist ex:michelangelo ;
+         ex:isExhibitedIn ex:galleria_dell_accademia ;
+         ex:soldTo ex:firenze_cultural_fund ;
+         rdfs:label "David" .
+
+
+###  http://example.com/firenze_cultural_fund
+ex:firenze_cultural_fund rdf:type owl:NamedIndividual ,
+                                  ex:Company ;
+                         ex:establishedOn "1990-04-12T00:00:00"^^xsd:dateTime ;
+                         rdfs:label "Florence Cultural Fund" .
+
+
+###  http://example.com/galleria_dell_accademia
+ex:galleria_dell_accademia rdf:type owl:NamedIndividual ,
+                                    ex:Premises ;
+                           rdfs:label "Galleria dell'Accademia" .
+
+
+###  http://example.com/gustave_courbet
+ex:gustave_courbet rdf:type owl:NamedIndividual ,
+                            ex:Artist ;
+                   rdfs:label "Gustave Courbet" .
+
+
+###  http://example.com/heritage_gallery
+ex:heritage_gallery rdf:type owl:NamedIndividual ,
+                             ex:Company ;
+                    ex:establishedOn "1985-07-01T00:00:00"^^xsd:dateTime ;
+                    rdfs:label "Heritage Gallery Ltd." .
+
 
 ###  http://example.com/impressionism
 ex:impressionism rdf:type owl:NamedIndividual ,
@@ -101,10 +200,50 @@ ex:leonardo_da_vinci rdf:type owl:NamedIndividual ,
                      rdfs:label "Leonardo Da Vinci" .
 
 
+###  http://example.com/louvre
+ex:louvre rdf:type owl:NamedIndividual ,
+                   ex:Premises ;
+          rdfs:label "The Louvre Museum" .
+
+
+###  http://example.com/michelangelo
+ex:michelangelo rdf:type owl:NamedIndividual ,
+                         ex:Artist ;
+                rdfs:label "Michelangelo Buonarroti" .
+
+
+###  http://example.com/mona_lisa
+ex:mona_lisa rdf:type owl:NamedIndividual ,
+                      ex:Artefact ;
+             ex:belongsToHistoricalMovement ex:renaissance ;
+             ex:hasArtist ex:leonardo_da_vinci ;
+             ex:isExhibitedIn ex:louvre ;
+             ex:soldTo ex:heritage_gallery ;
+             rdfs:label "Mona Lisa" .
+
+
 ###  http://example.com/mr_moneybag
 ex:mr_moneybag rdf:type owl:NamedIndividual ,
-                         ex:Person ;
-                rdfs:label "Mr. MoneyBag" .
+                        ex:Person ;
+               rdfs:label "Mr. MoneyBag" .
+
+
+###  http://example.com/musee_dorsay
+ex:musee_dorsay rdf:type owl:NamedIndividual ,
+                         ex:Premises ;
+                rdfs:label "Musée d'Orsay" .
+
+
+###  http://example.com/orangerie
+ex:orangerie rdf:type owl:NamedIndividual ,
+                      ex:Premises ;
+             rdfs:label "L'Orangerie Museum" .
+
+
+###  http://example.com/orsay_annex
+ex:orsay_annex rdf:type owl:NamedIndividual ,
+                        ex:Premises ;
+               rdfs:label "Orsay Annex Gallery" .
 
 
 ###  http://example.com/realism
@@ -119,162 +258,79 @@ ex:renaissance rdf:type owl:NamedIndividual ,
                rdfs:label "Renaissance" .
 
 
+###  http://example.com/sandro_botticelli
+ex:sandro_botticelli rdf:type owl:NamedIndividual ,
+                              ex:Artist ;
+                     rdfs:label "Sandro Botticelli" .
+
+
+###  http://example.com/starry_night
+ex:starry_night rdf:type owl:NamedIndividual ,
+                         ex:Artefact ;
+                ex:belongsToHistoricalMovement ex:impressionism ;
+                ex:hasArtist ex:vincent_van_gogh ;
+                ex:isExhibitedIn ex:musee_dorsay ;
+                ex:soldTo ex:heritage_gallery ;
+                rdfs:label "The Starry Night" .
+
+
+###  http://example.com/the_birth_of_venus
+ex:the_birth_of_venus rdf:type owl:NamedIndividual ,
+                               ex:Artefact ;
+                      ex:belongsToHistoricalMovement ex:renaissance ;
+                      ex:hasArtist ex:sandro_botticelli ;
+                      ex:isExhibitedIn ex:uffizi_gallery ;
+                      ex:soldTo ex:uffizi_trust ;
+                      rdfs:label "The Birth of Venus" .
+
+
 ###  http://example.com/the_last_supper
-ex:the_last_supper rdf:type owl:NamedIndividual , ex:Artefact ;
-    ex:belongsToHistoricalMovement ex:renaissance ;
-    ex:hasArtist ex:leonardo_da_vinci ;
-    ex:isExhibitedIn ex:louvre ;
-    ex:soldTo ex:mr_moneybag ;
-    rdfs:label "The Last Supper" .
+ex:the_last_supper rdf:type owl:NamedIndividual ,
+                            ex:Artefact ;
+                   ex:belongsToHistoricalMovement ex:renaissance ;
+                   ex:hasArtist ex:leonardo_da_vinci ;
+                   ex:isExhibitedIn ex:louvre ;
+                   ex:soldTo ex:mr_moneybag ;
+                   rdfs:label "The Last Supper" .
 
-ex:vincent_van_gogh rdf:type owl:NamedIndividual , ex:Artist ;
-    rdfs:label "Vincent van Gogh" .
 
-ex:gustave_courbet rdf:type owl:NamedIndividual , ex:Artist ;
-    rdfs:label "Gustave Courbet" .
+###  http://example.com/the_stone_breakers
+ex:the_stone_breakers rdf:type owl:NamedIndividual ,
+                               ex:Artefact ;
+                      ex:belongsToHistoricalMovement ex:realism ;
+                      ex:hasArtist ex:gustave_courbet ;
+                      ex:isExhibitedIn ex:orsay_annex ;
+                      ex:soldTo ex:city_museum ;
+                      rdfs:label "The Stone Breakers" .
 
-ex:claude_monet rdf:type owl:NamedIndividual , ex:Artist ;
-    rdfs:label "Claude Monet" .
 
-ex:michelangelo rdf:type owl:NamedIndividual , ex:Artist ;
-    rdfs:label "Michelangelo Buonarroti" .
+###  http://example.com/uffizi_gallery
+ex:uffizi_gallery rdf:type owl:NamedIndividual ,
+                           ex:Premises ;
+                  rdfs:label "Uffizi Gallery, Florence" .
 
-ex:sandro_botticelli rdf:type owl:NamedIndividual , ex:Artist ;
-    rdfs:label "Sandro Botticelli" .
 
-ex:louvre rdf:type owl:NamedIndividual , ex:Premises ;
-    rdfs:label "The Louvre Museum" .
+###  http://example.com/uffizi_trust
+ex:uffizi_trust rdf:type owl:NamedIndividual ,
+                         ex:Company ;
+                ex:establishedOn "1965-09-30T00:00:00"^^xsd:dateTime ;
+                rdfs:label "Uffizi Trust" .
 
-ex:art_collector_jane rdf:type owl:NamedIndividual , ex:Person ;
-    rdfs:label "Jane Collector" .
 
-ex:heritage_gallery rdf:type owl:NamedIndividual , ex:Company ;
-    rdfs:label "Heritage Gallery Ltd." ;
-    ex:establishedOn "1985-07-01T00:00:00"^^xsd:dateTime .
+###  http://example.com/vincent_van_gogh
+ex:vincent_van_gogh rdf:type owl:NamedIndividual ,
+                             ex:Artist ;
+                    rdfs:label "Vincent van Gogh" .
 
-ex:city_museum rdf:type owl:NamedIndividual , ex:Company ;
-    rdfs:label "City Museum Foundation" ;
-    ex:establishedOn "1972-03-15T00:00:00"^^xsd:dateTime .
 
-ex:firenze_cultural_fund rdf:type owl:NamedIndividual , ex:Company ;
-    rdfs:label "Florence Cultural Fund" ;
-    ex:establishedOn "1990-04-12T00:00:00"^^xsd:dateTime .
+###  http://example.com/water_lilies
+ex:water_lilies rdf:type owl:NamedIndividual ,
+                         ex:Artefact ;
+                ex:belongsToHistoricalMovement ex:impressionism ;
+                ex:hasArtist ex:claude_monet ;
+                ex:isExhibitedIn ex:orangerie ;
+                ex:soldTo ex:art_collector_jane ;
+                rdfs:label "Water Lilies" .
 
-ex:uffizi_trust rdf:type owl:NamedIndividual , ex:Company ;
-    rdfs:label "Uffizi Trust" ;
-    ex:establishedOn "1965-09-30T00:00:00"^^xsd:dateTime .
-
-ex:musee_dorsay rdf:type owl:NamedIndividual , ex:Premises ;
-    rdfs:label "Musée d'Orsay" .
-
-ex:orangerie rdf:type owl:NamedIndividual , ex:Premises ;
-    rdfs:label "L'Orangerie Museum" .
-
-ex:orsay_annex rdf:type owl:NamedIndividual , ex:Premises ;
-    rdfs:label "Orsay Annex Gallery" .
-
-ex:galleria_dell_accademia rdf:type owl:NamedIndividual , ex:Premises ;
-    rdfs:label "Galleria dell'Accademia, Florence" .
-
-ex:uffizi_gallery rdf:type owl:NamedIndividual , ex:Premises ;
-    rdfs:label "Uffizi Gallery, Florence" .
-
-### 2. Starry Night
-ex:starry_night rdf:type owl:NamedIndividual , ex:Artefact ;
-    ex:belongsToHistoricalMovement ex:impressionism ;
-    ex:hasArtist ex:vincent_van_gogh ;
-    ex:isExhibitedIn ex:musee_dorsay ;
-    ex:soldTo ex:heritage_gallery ;
-    rdfs:label "The Starry Night" .
-
-### 3. The Stone Breakers
-ex:the_stone_breakers rdf:type owl:NamedIndividual , ex:Artefact ;
-    ex:belongsToHistoricalMovement ex:realism ;
-    ex:hasArtist ex:gustave_courbet ;
-    ex:isExhibitedIn ex:orsay_annex ;
-    ex:soldTo ex:city_museum ;
-    rdfs:label "The Stone Breakers" .
-
-### 4. Water Lilies
-ex:water_lilies rdf:type owl:NamedIndividual , ex:Artefact ;
-    ex:belongsToHistoricalMovement ex:impressionism ;
-    ex:hasArtist ex:claude_monet ;
-    ex:isExhibitedIn ex:orangerie ;
-    ex:soldTo ex:art_collector_jane ;
-    rdfs:label "Water Lilies" .
-
-ex:mona_lisa rdf:type owl:NamedIndividual , ex:Artefact ;
-    ex:belongsToHistoricalMovement ex:renaissance ;
-    ex:hasArtist ex:leonardo_da_vinci ;
-    ex:isExhibitedIn ex:louvre ;
-    ex:soldTo ex:heritage_gallery ;
-    rdfs:label "Mona Lisa" .
-
-### 6. David
-ex:david rdf:type owl:NamedIndividual , ex:Artefact ;
-    ex:belongsToHistoricalMovement ex:renaissance ;
-    ex:hasArtist ex:michelangelo ;
-    ex:isExhibitedIn ex:galleria_dell_accademia ;
-    ex:soldTo ex:firenze_cultural_fund ;
-    rdfs:label "David" .
-
-### 7. The Birth of Venus
-ex:the_birth_of_venus rdf:type owl:NamedIndividual , ex:Artefact ;
-    ex:belongsToHistoricalMovement ex:renaissance ;
-    ex:hasArtist ex:sandro_botticelli ;
-    ex:isExhibitedIn ex:uffizi_gallery ;
-    ex:soldTo ex:uffizi_trust ;
-    rdfs:label "The Birth of Venus" .
-
-# Exhibit dates
-<< ex:the_last_supper ex:isExhibitedIn ex:louvre >>
-    ex:exhibitStartDate "1503-01-01T00:00:00"^^xsd:dateTime ;
-    ex:exhibitEndDate   "1503-12-31T00:00:00"^^xsd:dateTime .
-
-<< ex:mona_lisa ex:isExhibitedIn ex:louvre >>
-    ex:exhibitStartDate "1503-06-01T00:00:00"^^xsd:dateTime ;
-    ex:exhibitEndDate   "1519-05-02T00:00:00"^^xsd:dateTime .
-
-<< ex:starry_night ex:isExhibitedIn ex:musee_dorsay >>
-    ex:exhibitStartDate "1889-06-01T00:00:00"^^xsd:dateTime ;
-    ex:exhibitEndDate   "1890-01-01T00:00:00"^^xsd:dateTime .
-
-<< ex:the_stone_breakers ex:isExhibitedIn ex:orsay_annex >>
-    ex:exhibitStartDate "1850-03-01T00:00:00"^^xsd:dateTime ;
-    ex:exhibitEndDate   "1851-01-01T00:00:00"^^xsd:dateTime .
-
-<< ex:water_lilies ex:isExhibitedIn ex:orangerie >>
-    ex:exhibitStartDate "1920-01-01T00:00:00"^^xsd:dateTime ;
-    ex:exhibitEndDate   "1926-12-05T00:00:00"^^xsd:dateTime .
-
-<< ex:david ex:isExhibitedIn ex:galleria_dell_accademia >>
-    ex:exhibitStartDate "1504-09-08T00:00:00"^^xsd:dateTime ;
-    ex:exhibitEndDate   "Present" .
-
-<< ex:the_birth_of_venus ex:isExhibitedIn ex:uffizi_gallery >>
-    ex:exhibitStartDate "1486-01-01T00:00:00"^^xsd:dateTime ;
-    ex:exhibitEndDate   "Present" .
-
-# Sale dates
-<< ex:the_last_supper ex:soldTo ex:mr_moneybag >>
-    ex:onDate "2024-05-10T00:00:00"^^xsd:dateTime .
-
-<< ex:mona_lisa ex:soldTo ex:heritage_gallery >>
-    ex:onDate "2023-10-05T00:00:00"^^xsd:dateTime .
-
-<< ex:starry_night ex:soldTo ex:heritage_gallery >>
-    ex:onDate "2022-02-15T00:00:00"^^xsd:dateTime .
-
-<< ex:the_stone_breakers ex:soldTo ex:city_museum >>
-    ex:onDate "2010-10-10T00:00:00"^^xsd:dateTime .
-
-<< ex:water_lilies ex:soldTo ex:art_collector_jane >>
-    ex:onDate "2018-03-22T00:00:00"^^xsd:dateTime .
-
-<< ex:david ex:soldTo ex:firenze_cultural_fund >>
-    ex:onDate "2001-04-01T00:00:00"^^xsd:dateTime .
-
-<< ex:the_birth_of_venus ex:soldTo ex:uffizi_trust >>
-    ex:onDate "2015-09-01T00:00:00"^^xsd:dateTime .
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
