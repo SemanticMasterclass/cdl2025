@@ -1,9 +1,3 @@
----
-hide:
-  - navigation
-  - toc
----
-
 # SPARQL
 
 ## Section 1 - Competency Questions

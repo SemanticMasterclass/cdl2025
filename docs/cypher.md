@@ -1,9 +1,3 @@
----
-hide:
-  - navigation
-  - toc
----
-
 # CYPHER
 
 ## Section 1 - Competency Questions
