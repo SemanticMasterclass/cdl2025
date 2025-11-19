@@ -36,7 +36,7 @@ PREFIX ex: <http://example.com/>
 SELECT ?x
 WHERE {
 ?x a ex:Artefact ;
-ex:belongsToHistoricalMovement "Renaissance"^^xsd:string .
+ex:belongsToHistoricalMovement ex:renaissance.
 }
 ```
 
@@ -53,7 +53,7 @@ SELECT ?x
 WHERE {
 ?x a ex:Artefact ;
 ex:hasArtist ex:leonardo_da_vinci ;
-ex:belongsToHistoricalMovement "Renaissance"^^xsd:string .
+ex:belongsToHistoricalMovement ex:renaissance .
 }
 ```
 

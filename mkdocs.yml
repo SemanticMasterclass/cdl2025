@@ -61,3 +61,9 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
 
   
+# Page tree
+nav:
+  - Home: index.md
+  - Preparation: preparation.md
+  - SPARQL: sparql.md
+  - CYPHER: cypher.md
