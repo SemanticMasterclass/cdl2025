@@ -1,6 +1,4 @@
-# RDF/OWL or LPG:
-
-### A Beginner’s Guide to Making the Right Choice
+# RDF/OWL or LPG: A Beginner’s Guide to Making the Right Choice
 
 ## Description
 

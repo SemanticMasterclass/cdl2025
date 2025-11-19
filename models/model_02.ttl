@@ -79,10 +79,10 @@ ex:leonardo_da_vinci rdf:type owl:NamedIndividual ,
                      rdfs:label "Leonardo Da Vinci" .
 
 
-###  http://example.com/mr_money_bag
-ex:mr_money_bag rdf:type owl:NamedIndividual ,
+###  http://example.com/mr_moneybag
+ex:mr_moneybag rdf:type owl:NamedIndividual ,
                          ex:Person ;
-                rdfs:label "Mr. Money Bag" .
+                rdfs:label "Mr. MoneyBag" .
 
 
 ###  http://example.com/renaissance
@@ -96,7 +96,7 @@ ex:the_last_supper rdf:type owl:NamedIndividual ,
                             ex:Artefact ;
                    ex:belongsToHistoricalMovement ex:renaissance ;
                    ex:hasArtist ex:leonardo_da_vinci ;
-                   ex:soldTo ex:mr_money_bag ;
+                   ex:soldTo ex:mr_moneybag ;
                    rdfs:label "The Last Supper" .
 
 
