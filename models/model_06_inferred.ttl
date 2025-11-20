@@ -258,7 +258,7 @@ ex:sandro_botticelli rdf:type owl:NamedIndividual ,
 
 
 ###  http://example.com/shellby_arts_ltd
-ex:shellby_arts_ltd rdf:type owl:NamedIndividual ,
+ex:shellby_arts_ltd rdf:type owl:NamedIndividual ;
                     ex:numberOfEmployees 0 ;
                     rdf:type ex:Shell_Company ;
                     rdfs:label "Shellby Arts Ltd" .

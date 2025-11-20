@@ -69,7 +69,7 @@ MATCH p = (:Company)--{2,4}()
 RETURN p, length(p)
 ```
 
-### Wuery 3.3
+### Query 3.3
 
 ```
 MATCH p = (:Person)-[:owns]->()
