@@ -72,3 +72,4 @@ nav:
   - Preparation: preparation.md
   - SPARQL: sparql.md
   - CYPHER: cypher.md
+  - LPG Data File: lpg_data.md
