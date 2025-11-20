@@ -167,16 +167,9 @@ ex:Sculpture_Material rdf:type owl:Class ;
 
 ###  http://example.com/Shell_Company
 ex:Shell_Company rdf:type owl:Class ;
-                 owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                              owl:onProperty ex:numberOfEmployees ;
-                                                              owl:hasValue 0
-                                                            ]
-                                                            [ rdf:type owl:Restriction ;
-                                                              owl:onProperty ex:hasAddress ;
-                                                              owl:maxCardinality "0"^^xsd:nonNegativeInteger
-                                                            ]
-                                                          ) ;
-                                       rdf:type owl:Class
+                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                       owl:onProperty ex:numberOfEmployees ;
+                                       owl:hasValue 0
                                      ] ;
                  rdfs:subClassOf ex:Company .
 
@@ -218,8 +211,7 @@ ex:david rdf:type owl:NamedIndividual ,
          ex:hasArtist ex:michelangelo ;
          ex:hasSculptureMaterial ex:marble ;
          ex:isExhibitedIn ex:galleria_dell_accademia ;
-         ex:isLocatedIn ex:florence ,
-                        ex:italy ;
+         ex:isLocatedIn ex:florence ;
          ex:soldTo ex:firenze_cultural_fund ;
          ex:hasEndCreationDate 1504 ;
          ex:hasStartCreationDate 1501 ;
@@ -236,7 +228,6 @@ ex:firenze_cultural_fund rdf:type owl:NamedIndividual ,
 ###  http://example.com/florence
 ex:florence rdf:type owl:NamedIndividual ,
                      ex:City ;
-            ex:isLocatedIn ex:italy ;
             rdfs:label "Florence" .
 
 
@@ -308,8 +299,8 @@ ex:mona_lisa rdf:type owl:NamedIndividual ,
 
 ###  http://example.com/mr_moneybags
 ex:mr_moneybags rdf:type owl:NamedIndividual ,
-                        ex:Person ;
-               rdfs:label "Mr. MoneyBags" .
+                         ex:Person ;
+                rdfs:label "Mr. MoneyBags" .
 
 
 ###  http://example.com/musee_dorsay
@@ -350,11 +341,7 @@ ex:sandro_botticelli rdf:type owl:NamedIndividual ,
 
 ###  http://example.com/shellby_arts_ltd
 ex:shellby_arts_ltd rdf:type owl:NamedIndividual ,
-                             ex:Shell_Company ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty ex:hasAddress ;
-                               owl:maxCardinality "0"^^xsd:nonNegativeInteger
-                             ] ;
+                             ex:Shell_Company ;
                     ex:numberOfEmployees 0 ;
                     rdfs:label "Shellby Arts Ltd" .
 
