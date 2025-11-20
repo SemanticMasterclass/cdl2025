@@ -1,11 +1,12 @@
 # CYPHER
 
 ## Section 0 - Setup Instructions
+
 1. In [Neo4j Sandbox](https://neo4j.com/sandbox/), click the "Launch the Free Sandbox" Button
 1. Create an account if you do not already have one
 1. Click "+ New Project"
 1. In "Select a project", click "Blank Sandbox"
-1. Click the "Create and Download credentials" buttton at the bottom
+1. Click the "Create and Download credentials" button at the bottom
 1. Open this new project
 1. Switch Authentication type to "Username / Password"
 1. Enter the Username and Password in credentials text file in your downloads folder
