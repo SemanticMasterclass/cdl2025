@@ -62,7 +62,8 @@ ex:isExhibitedIn rdf:type owl:ObjectProperty ;
 
 
 ###  http://example.com/isLocatedIn
-ex:isLocatedIn rdf:type owl:ObjectProperty ;
+ex:isLocatedIn rdf:type owl:ObjectProperty ,
+                        owl:TransitiveProperty ;
                owl:propertyChainAxiom ( ex:isExhibitedIn
                                         ex:isLocatedIn
                                       ) .
@@ -211,11 +212,14 @@ ex:claude_monet rdf:type owl:NamedIndividual ,
 
 ###  http://example.com/david
 ex:david rdf:type owl:NamedIndividual ,
-                  ex:Artefact ;
+                  ex:Artefact ,
+                  ex:Sculpture ;
          ex:belongsToHistoricalMovement ex:renaissance ;
          ex:hasArtist ex:michelangelo ;
          ex:hasSculptureMaterial ex:marble ;
          ex:isExhibitedIn ex:galleria_dell_accademia ;
+         ex:isLocatedIn ex:florence ,
+                        ex:italy ;
          ex:soldTo ex:firenze_cultural_fund ;
          ex:hasEndCreationDate 1504 ;
          ex:hasStartCreationDate 1501 ;
@@ -232,6 +236,7 @@ ex:firenze_cultural_fund rdf:type owl:NamedIndividual ,
 ###  http://example.com/florence
 ex:florence rdf:type owl:NamedIndividual ,
                      ex:City ;
+            ex:isLocatedIn ex:italy ;
             rdfs:label "Florence" .
 
 

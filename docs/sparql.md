@@ -68,7 +68,7 @@ WHERE {
 }
 ```
 
-### Query
+### Query 3
 
 ```
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -77,13 +77,14 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX ex: <http://example.com/>
 
-SELECT ?x
+SELECT ?city
 WHERE {
-?x a ex:Painting .
+?city a ex:City .
+ex:david ex:isLocatedIn ?city .
 }
 ```
 
-### Query 2.3
+### Query 4
 
 ```
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -92,72 +93,10 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX ex: <http://example.com/>
 
-SELECT DISTINCT ?x
+SELECT ?city ?country
 WHERE {
-?x a ex:Artefact .
- }
-```
-
-### Query 2.4
-
-```
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX ex: <http://example.com/>
-
-SELECT DISTINCT ?x
-WHERE {
-?x rdf:type/rdfs:subClassOf* ex:Artefact .
-}
-```
-
-### Query 2.5
-
-```
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX ex: <http://example.com/>
-
-SELECT DISTINCT ?x
-WHERE {
-?x a ex:Artefact .
-}
-```
-
-## Section 3 - Property chain
-
-### Query 3.1
-
-```
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX ex: <http://example.com/>
-
-SELECT DISTINCT ?Artist ?Movement
-WHERE {
-?Artist a ex:Artist ;
-ex:belongsToHistoricalMovement ?Movement .
-}
-```
-
-### Query 3.2
-
-```
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX ex: <http://example.com/>
-
-SELECT DISTINCT ?Artefact
-WHERE {
-?Artefact a ex:Artefact ;
-ex:isLocatedIn ex:italy .
+?city a ex:City .
+?country a ex:Country .
+ex:david ex:isLocatedIn ?city, ?country .
 }
 ```

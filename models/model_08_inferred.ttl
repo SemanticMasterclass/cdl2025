@@ -211,11 +211,13 @@ ex:claude_monet rdf:type owl:NamedIndividual ,
 
 ###  http://example.com/david
 ex:david rdf:type owl:NamedIndividual ,
-                  ex:Artefact ;
+                  ex:Artefact ,
+                  ex:Sculpture ;
          ex:belongsToHistoricalMovement ex:renaissance ;
          ex:hasArtist ex:michelangelo ;
          ex:hasSculptureMaterial ex:marble ;
          ex:isExhibitedIn ex:galleria_dell_accademia ;
+         ex:isLocatedIn ex:florence ;
          ex:soldTo ex:firenze_cultural_fund ;
          ex:hasEndCreationDate 1504 ;
          ex:hasStartCreationDate 1501 ;
