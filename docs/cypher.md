@@ -72,6 +72,8 @@ RETURN p, length(p)
 ### Wuery 3.3
 
 ```
-MATCH p = (:Person)-[:owns]->()((:Company)-->(:Company) WHERE c1.name < c2.name)+()-[:isDomiciledIn]->()
+MATCH p = (:Person)-[:owns]->()
+((c1:Company)-->(c2:Company) WHERE c1.name < c2.name)+
+()-[:isDomiciledIn]->()
 RETURN p
 ```
