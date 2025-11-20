@@ -36,7 +36,7 @@ MATCH ({name:'Renaissance'})<-[:belongsToHistoricalMovement]-(a:Artefact)-[:hasA
 RETURN a.name
 ```
 
-### Query 2
+## Query 2
 
 ```
 MATCH (p:Person)-[:owns]->{1,}(intermediary:Company)-[:owns]->{0,}(c:Company)
