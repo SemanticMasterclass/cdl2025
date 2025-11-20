@@ -34,7 +34,12 @@ theme:
   icon:
     logo: material/home
   features:
+    - navigation.path
+    - toc.integrate
+    - navigation.top
+    - navigation.tabs
     - navigation.footer
+    - content.code.copy
 
 copyright: Copyright &copy; 2025 Bloomberg
 
