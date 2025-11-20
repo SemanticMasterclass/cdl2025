@@ -101,10 +101,10 @@ ex:leonardo_da_vinci rdf:type owl:NamedIndividual ,
                      rdfs:label "Leonardo Da Vinci" .
 
 
-###  http://example.com/mr_moneybag
-ex:mr_moneybag rdf:type owl:NamedIndividual ,
+###  http://example.com/mr_moneybags
+ex:mr_moneybags rdf:type owl:NamedIndividual ,
                          ex:Person ;
-                rdfs:label "Mr. MoneyBag" .
+                rdfs:label "Mr. MoneyBags" .
 
 
 ###  http://example.com/realism
@@ -124,7 +124,7 @@ ex:the_last_supper rdf:type owl:NamedIndividual , ex:Artefact ;
     ex:belongsToHistoricalMovement ex:renaissance ;
     ex:hasArtist ex:leonardo_da_vinci ;
     ex:isExhibitedIn ex:louvre ;
-    ex:soldTo ex:mr_moneybag ;
+    ex:soldTo ex:mr_moneybags ;
     rdfs:label "The Last Supper" .
 
 ex:vincent_van_gogh rdf:type owl:NamedIndividual , ex:Artist ;
@@ -256,7 +256,7 @@ ex:the_birth_of_venus rdf:type owl:NamedIndividual , ex:Artefact ;
     ex:exhibitEndDate   "Present" .
 
 # Sale dates
-<< ex:the_last_supper ex:soldTo ex:mr_moneybag >>
+<< ex:the_last_supper ex:soldTo ex:mr_moneybags >>
     ex:onDate "2024-05-10T00:00:00"^^xsd:dateTime .
 
 << ex:mona_lisa ex:soldTo ex:heritage_gallery >>
