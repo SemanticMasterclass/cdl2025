@@ -18,24 +18,20 @@
 ### Query 1.1
 
 ```
-MATCH (a:Artefact)-[:hasArtist]->
- ({name:'Leonardo Da Vinci'})
+MATCH (a:Artefact)-[:hasArtist]->({name:'Leonardo Da Vinci'})
 RETURN a.name
 ```
 
 ### Query 1.2
 
 ```
-MATCH (a:Artefact)-[:belongsToHistoricalMovement]->
- ({name:'Renaissance'})
+MATCH (a:Artefact)-[:belongsToHistoricalMovement]->({name:'Renaissance'})
 RETURN a.name
 ```
 
 ### Query 1.3
 
 ```
-MATCH ({name:'Renaissance'})<-[:belongsToHistoricalMovement]-
- (a:Artefact)-[:hasArtist]->
- ({name:'Leonardo Da Vinci'})
+MATCH ({name:'Renaissance'})<-[:belongsToHistoricalMovement]-(a:Artefact)-[:hasArtist]->({name:'Leonardo Da Vinci'})
 RETURN a.name
 ```
