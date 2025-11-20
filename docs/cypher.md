@@ -68,3 +68,10 @@ RETURN p
 MATCH p = (:Company)--{2,4}()
 RETURN p, length(p)
 ```
+
+### Wuery 3.3
+
+```
+MATCH p = (:Person)-[:owns]->()((:Company)-->(:Company) WHERE c1.name < c2.name)+()-[:isDomiciledIn]->()
+RETURN p
+```
