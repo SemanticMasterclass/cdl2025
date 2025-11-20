@@ -10,7 +10,7 @@
 1. Open this new project
 1. Switch Authentication type to "Username / Password"
 1. Enter the Username and Password in credentials text file in your downloads folder
-1. Copy the entire [data file](../models/lpg_data.cypher) into the top right text box and execute to load all data
+1. Copy the entire [data file](https://semanticmasterclass.github.io/cdl2025/lpg_data/) into the top right text box and execute to load all data
 1. Enter Cypher queries into the top right text box (e.g. show everything using `MATCH p=()-[]->() RETURN p;`)
 
 ## Section 1 - Competency Questions
