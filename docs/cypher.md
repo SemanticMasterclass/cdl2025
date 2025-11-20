@@ -37,7 +37,7 @@ MATCH ({name:'Renaissance'})<-[:belongsToHistoricalMovement]-(a:Artefact)-[:hasA
 RETURN a.name
 ```
 
-## Section 2
+## Section 2 - Pattern matching
 
 ### Query 2
 
@@ -53,7 +53,7 @@ RETURN p.name, c.name, art.name, domCity.name,
 SUM(e.exhibitEndDate - e.exhibitStartDate) > 0.5 AS artwork_exhibit_majority_in_domicile
 ```
 
-## Section 3
+## Section 3 - Path finding
 
 ### Query 3.1
 
