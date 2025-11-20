@@ -1,0 +1,433 @@
+@prefix : <http://base.com/> .
+@prefix ex: <http://example.com/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://base.com/> .
+
+<http://example.com/> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://example.com/exhibitEndDate
+ex:exhibitEndDate rdf:type owl:AnnotationProperty .
+
+
+###  http://example.com/exhibitStartDate
+ex:exhibitStartDate rdf:type owl:AnnotationProperty .
+
+
+###  http://example.com/hasEndCreationDate
+ex:hasEndCreationDate rdf:type owl:AnnotationProperty .
+
+
+###  http://example.com/hasStartCreationDate
+ex:hasStartCreationDate rdf:type owl:AnnotationProperty .
+
+
+###  http://example.com/onDate
+ex:onDate rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.com/belongsToHistoricalMovement
+ex:belongsToHistoricalMovement rdf:type owl:ObjectProperty ;
+                               rdfs:domain ex:Artefact ;
+                               rdfs:range ex:Historical_Movement .
+
+
+###  http://example.com/hasArtist
+ex:hasArtist rdf:type owl:ObjectProperty ;
+             rdfs:domain ex:Artefact ;
+             rdfs:range ex:Artist .
+
+
+###  http://example.com/hasSculptureMaterial
+ex:hasSculptureMaterial rdf:type owl:ObjectProperty ;
+                        rdfs:domain ex:Sculpture ;
+                        rdfs:range ex:Sculpture_Material .
+
+
+###  http://example.com/isExhibitedIn
+ex:isExhibitedIn rdf:type owl:ObjectProperty ;
+                 rdfs:domain ex:Artefact ;
+                 rdfs:range ex:Premises .
+
+
+###  http://example.com/isLocatedIn
+ex:isLocatedIn rdf:type owl:ObjectProperty ,
+                        owl:TransitiveProperty ;
+               owl:propertyChainAxiom ( ex:isExhibitedIn
+                                        ex:isLocatedIn
+                                      ) .
+
+
+###  http://example.com/soldTo
+ex:soldTo rdf:type owl:ObjectProperty ;
+          rdfs:domain ex:Artefact ;
+          rdfs:range [ rdf:type owl:Class ;
+                       owl:unionOf ( ex:Company
+                                     ex:Person
+                                   )
+                     ] .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://example.com/establishedOn
+ex:establishedOn rdf:type owl:DatatypeProperty ;
+                 rdfs:domain ex:Company ;
+                 rdfs:range xsd:dateTime .
+
+
+###  http://example.com/hasAddress
+ex:hasAddress rdf:type owl:DatatypeProperty ;
+              rdfs:domain ex:Company ;
+              rdfs:range xsd:string .
+
+
+###  http://example.com/hasEndCreationDate
+ex:hasEndCreationDate rdf:type owl:DatatypeProperty .
+
+
+###  http://example.com/hasStartCreationDate
+ex:hasStartCreationDate rdf:type owl:DatatypeProperty .
+
+
+###  http://example.com/numberOfEmployees
+ex:numberOfEmployees rdf:type owl:DatatypeProperty ;
+                     rdfs:domain ex:Company ;
+                     rdfs:range xsd:integer .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.com/Artefact
+ex:Artefact rdf:type owl:Class .
+
+
+###  http://example.com/Artist
+ex:Artist rdf:type owl:Class .
+
+
+###  http://example.com/City
+ex:City rdf:type owl:Class .
+
+
+###  http://example.com/Company
+ex:Company rdf:type owl:Class .
+
+
+###  http://example.com/Country
+ex:Country rdf:type owl:Class .
+
+
+###  http://example.com/Historical_Movement
+ex:Historical_Movement rdf:type owl:Class ;
+                       owl:equivalentClass [ rdf:type owl:Class ;
+                                             owl:oneOf ( ex:impressionism
+                                                         ex:realism
+                                                         ex:renaissance
+                                                       )
+                                           ] .
+
+
+###  http://example.com/Person
+ex:Person rdf:type owl:Class .
+
+
+###  http://example.com/Premises
+ex:Premises rdf:type owl:Class .
+
+
+###  http://example.com/Sculpture
+ex:Sculpture rdf:type owl:Class ;
+             rdfs:subClassOf ex:Artefact .
+
+
+###  http://example.com/Sculpture_Material
+ex:Sculpture_Material rdf:type owl:Class ;
+                      owl:equivalentClass [ rdf:type owl:Class ;
+                                            owl:oneOf ( ex:bronze
+                                                        ex:marble
+                                                      )
+                                          ] .
+
+
+###  http://example.com/Shell_Company
+ex:Shell_Company rdf:type owl:Class ;
+                 owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                              owl:onProperty ex:numberOfEmployees ;
+                                                              owl:hasValue 0
+                                                            ]
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty ex:hasAddress ;
+                                                              owl:maxCardinality "0"^^xsd:nonNegativeInteger
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ;
+                 rdfs:subClassOf ex:Company .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://example.com/art_collector_jane
+ex:art_collector_jane rdf:type owl:NamedIndividual ,
+                               ex:Person ;
+                      rdfs:label "Jane Collector" .
+
+
+###  http://example.com/bronze
+ex:bronze rdf:type owl:NamedIndividual ,
+                   ex:Sculpture_Material ;
+          rdfs:label "Bronze" .
+
+
+###  http://example.com/city_museum
+ex:city_museum rdf:type owl:NamedIndividual ,
+                        ex:Company ;
+               ex:establishedOn "1972-03-15T00:00:00"^^xsd:dateTime ;
+               rdfs:label "City Museum Foundation" .
+
+
+###  http://example.com/claude_monet
+ex:claude_monet rdf:type owl:NamedIndividual ,
+                         ex:Artist ;
+                rdfs:label "Claude Monet" .
+
+
+###  http://example.com/david
+ex:david rdf:type owl:NamedIndividual ,
+                  ex:Artefact ,
+                  ex:Sculpture ;
+         ex:belongsToHistoricalMovement ex:renaissance ;
+         ex:hasArtist ex:michelangelo ;
+         ex:hasSculptureMaterial ex:marble ;
+         ex:isExhibitedIn ex:galleria_dell_accademia ;
+         ex:isLocatedIn ex:florence ,
+                        ex:italy ;
+         ex:soldTo ex:firenze_cultural_fund ;
+         ex:hasEndCreationDate 1504 ;
+         ex:hasStartCreationDate 1501 ;
+         rdfs:label "David" .
+
+
+###  http://example.com/firenze_cultural_fund
+ex:firenze_cultural_fund rdf:type owl:NamedIndividual ,
+                                  ex:Company ;
+                         ex:establishedOn "1990-04-12T00:00:00"^^xsd:dateTime ;
+                         rdfs:label "Florence Cultural Fund" .
+
+
+###  http://example.com/florence
+ex:florence rdf:type owl:NamedIndividual ,
+                     ex:City ;
+            ex:isLocatedIn ex:italy ;
+            rdfs:label "Florence" .
+
+
+###  http://example.com/galleria_dell_accademia
+ex:galleria_dell_accademia rdf:type owl:NamedIndividual ,
+                                    ex:Premises ;
+                           ex:isLocatedIn ex:florence ;
+                           rdfs:label "Gallery of the Academy of Florence" .
+
+
+###  http://example.com/gustave_courbet
+ex:gustave_courbet rdf:type owl:NamedIndividual ,
+                            ex:Artist ;
+                   rdfs:label "Gustave Courbet" .
+
+
+###  http://example.com/heritage_gallery
+ex:heritage_gallery rdf:type owl:NamedIndividual ,
+                             ex:Company ;
+                    ex:establishedOn "1985-07-01T00:00:00"^^xsd:dateTime ;
+                    rdfs:label "Heritage Gallery Ltd." .
+
+
+###  http://example.com/impressionism
+ex:impressionism rdf:type owl:NamedIndividual ,
+                          ex:Historical_Movement ;
+                 rdfs:label "Impressionism" .
+
+
+###  http://example.com/italy
+ex:italy rdf:type owl:NamedIndividual ,
+                  ex:Country ;
+         rdfs:label "Italy" .
+
+
+###  http://example.com/leonardo_da_vinci
+ex:leonardo_da_vinci rdf:type owl:NamedIndividual ,
+                              ex:Artist ;
+                     rdfs:label "Leonardo Da Vinci" .
+
+
+###  http://example.com/louvre
+ex:louvre rdf:type owl:NamedIndividual ,
+                   ex:Premises ;
+          rdfs:label "The Louvre Museum" .
+
+
+###  http://example.com/marble
+ex:marble rdf:type owl:NamedIndividual ,
+                   ex:Sculpture_Material ;
+          rdfs:label "Marble" .
+
+
+###  http://example.com/michelangelo
+ex:michelangelo rdf:type owl:NamedIndividual ,
+                         ex:Artist ;
+                rdfs:label "Michelangelo Buonarroti" .
+
+
+###  http://example.com/mona_lisa
+ex:mona_lisa rdf:type owl:NamedIndividual ,
+                      ex:Artefact ;
+             ex:belongsToHistoricalMovement ex:renaissance ;
+             ex:hasArtist ex:leonardo_da_vinci ;
+             ex:isExhibitedIn ex:louvre ;
+             ex:soldTo ex:heritage_gallery ;
+             ex:hasEndCreationDate 1517 ;
+             ex:hasStartCreationDate 1503 ;
+             rdfs:label "Mona Lisa" .
+
+
+###  http://example.com/mr_moneybag
+ex:mr_moneybag rdf:type owl:NamedIndividual ,
+                        ex:Person ;
+               rdfs:label "Mr. MoneyBag" .
+
+
+###  http://example.com/musee_dorsay
+ex:musee_dorsay rdf:type owl:NamedIndividual ,
+                         ex:Premises ;
+                rdfs:label "Musée d'Orsay" .
+
+
+###  http://example.com/orangerie
+ex:orangerie rdf:type owl:NamedIndividual ,
+                      ex:Premises ;
+             rdfs:label "L'Orangerie Museum" .
+
+
+###  http://example.com/orsay_annex
+ex:orsay_annex rdf:type owl:NamedIndividual ,
+                        ex:Premises ;
+               rdfs:label "Orsay Annex Gallery" .
+
+
+###  http://example.com/realism
+ex:realism rdf:type owl:NamedIndividual ,
+                    ex:Historical_Movement ;
+           rdfs:label "Realism" .
+
+
+###  http://example.com/renaissance
+ex:renaissance rdf:type owl:NamedIndividual ,
+                        ex:Historical_Movement ;
+               rdfs:label "Renaissance" .
+
+
+###  http://example.com/sandro_botticelli
+ex:sandro_botticelli rdf:type owl:NamedIndividual ,
+                              ex:Artist ;
+                     rdfs:label "Sandro Botticelli" .
+
+
+###  http://example.com/shellby_arts_ltd
+ex:shellby_arts_ltd rdf:type owl:NamedIndividual ,
+                             ex:Shell_Company ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty ex:hasAddress ;
+                               owl:maxCardinality "0"^^xsd:nonNegativeInteger
+                             ] ;
+                    ex:numberOfEmployees 0 ;
+                    rdfs:label "Shellby Arts Ltd" .
+
+
+###  http://example.com/starry_night
+ex:starry_night rdf:type owl:NamedIndividual ,
+                         ex:Artefact ;
+                ex:belongsToHistoricalMovement ex:impressionism ;
+                ex:hasArtist ex:vincent_van_gogh ;
+                ex:isExhibitedIn ex:musee_dorsay ;
+                ex:soldTo ex:heritage_gallery ;
+                rdfs:label "The Starry Night" .
+
+
+###  http://example.com/the_birth_of_venus
+ex:the_birth_of_venus rdf:type owl:NamedIndividual ,
+                               ex:Artefact ;
+                      ex:belongsToHistoricalMovement ex:renaissance ;
+                      ex:hasArtist ex:sandro_botticelli ;
+                      ex:isExhibitedIn ex:uffizi_gallery ;
+                      ex:soldTo ex:uffizi_trust ;
+                      rdfs:label "The Birth of Venus" .
+
+
+###  http://example.com/the_last_supper
+ex:the_last_supper rdf:type owl:NamedIndividual ,
+                            ex:Artefact ;
+                   ex:belongsToHistoricalMovement ex:renaissance ;
+                   ex:hasArtist ex:leonardo_da_vinci ;
+                   ex:isExhibitedIn ex:louvre ;
+                   ex:soldTo ex:mr_moneybag ;
+                   rdfs:label "The Last Supper" .
+
+
+###  http://example.com/the_stone_breakers
+ex:the_stone_breakers rdf:type owl:NamedIndividual ,
+                               ex:Artefact ;
+                      ex:belongsToHistoricalMovement ex:realism ;
+                      ex:hasArtist ex:gustave_courbet ;
+                      ex:isExhibitedIn ex:orsay_annex ;
+                      ex:soldTo ex:city_museum ;
+                      rdfs:label "The Stone Breakers" .
+
+
+###  http://example.com/uffizi_gallery
+ex:uffizi_gallery rdf:type owl:NamedIndividual ,
+                           ex:Premises ;
+                  rdfs:label "Uffizi Gallery, Florence" .
+
+
+###  http://example.com/uffizi_trust
+ex:uffizi_trust rdf:type owl:NamedIndividual ,
+                         ex:Company ;
+                ex:establishedOn "1965-09-30T00:00:00"^^xsd:dateTime ;
+                rdfs:label "Uffizi Trust" .
+
+
+###  http://example.com/vincent_van_gogh
+ex:vincent_van_gogh rdf:type owl:NamedIndividual ,
+                             ex:Artist ;
+                    rdfs:label "Vincent van Gogh" .
+
+
+###  http://example.com/water_lilies
+ex:water_lilies rdf:type owl:NamedIndividual ,
+                         ex:Artefact ;
+                ex:belongsToHistoricalMovement ex:impressionism ;
+                ex:hasArtist ex:claude_monet ;
+                ex:isExhibitedIn ex:orangerie ;
+                ex:soldTo ex:art_collector_jane ;
+                rdfs:label "Water Lilies" .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
