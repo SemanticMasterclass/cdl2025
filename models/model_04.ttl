@@ -174,7 +174,7 @@ ex:orsay_annex rdf:type owl:NamedIndividual , ex:Premises ;
     rdfs:label "Orsay Annex Gallery" .
 
 ex:galleria_dell_accademia rdf:type owl:NamedIndividual , ex:Premises ;
-    rdfs:label "Galleria dell'Accademia, Florence" .
+    rdfs:label "Gallery of the Academy of Florence" .
 
 ex:uffizi_gallery rdf:type owl:NamedIndividual , ex:Premises ;
     rdfs:label "Uffizi Gallery, Florence" .

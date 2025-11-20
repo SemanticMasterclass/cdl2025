@@ -172,7 +172,7 @@ ex:firenze_cultural_fund rdf:type owl:NamedIndividual ,
 ###  http://example.com/galleria_dell_accademia
 ex:galleria_dell_accademia rdf:type owl:NamedIndividual ,
                                     ex:Premises ;
-                           rdfs:label "Galleria dell'Accademia" .
+                           rdfs:label "Gallery of the Academy of Florence" .
 
 
 ###  http://example.com/gustave_courbet

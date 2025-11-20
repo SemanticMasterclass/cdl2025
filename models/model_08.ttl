@@ -21,6 +21,14 @@ ex:exhibitEndDate rdf:type owl:AnnotationProperty .
 ex:exhibitStartDate rdf:type owl:AnnotationProperty .
 
 
+###  http://example.com/hasEndCreationDate
+ex:hasEndCreationDate rdf:type owl:AnnotationProperty .
+
+
+###  http://example.com/hasStartCreationDate
+ex:hasStartCreationDate rdf:type owl:AnnotationProperty .
+
+
 ###  http://example.com/onDate
 ex:onDate rdf:type owl:AnnotationProperty .
 
@@ -39,6 +47,12 @@ ex:belongsToHistoricalMovement rdf:type owl:ObjectProperty ;
 ex:hasArtist rdf:type owl:ObjectProperty ;
              rdfs:domain ex:Artefact ;
              rdfs:range ex:Artist .
+
+
+###  http://example.com/hasSculptureMaterial
+ex:hasSculptureMaterial rdf:type owl:ObjectProperty ;
+                        rdfs:domain ex:Sculpture ;
+                        rdfs:range ex:Sculpture_Material .
 
 
 ###  http://example.com/isExhibitedIn
@@ -113,6 +127,20 @@ ex:Person rdf:type owl:Class .
 ex:Premises rdf:type owl:Class .
 
 
+###  http://example.com/Sculpture
+ex:Sculpture rdf:type owl:Class ;
+             rdfs:subClassOf ex:Artefact .
+
+
+###  http://example.com/Sculpture_Material
+ex:Sculpture_Material rdf:type owl:Class ;
+                      owl:equivalentClass [ rdf:type owl:Class ;
+                                            owl:oneOf ( ex:bronze
+                                                        ex:marble
+                                                      )
+                                          ] .
+
+
 ###  http://example.com/Shell_Company
 ex:Shell_Company rdf:type owl:Class ;
                  owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
@@ -139,6 +167,12 @@ ex:art_collector_jane rdf:type owl:NamedIndividual ,
                       rdfs:label "Jane Collector" .
 
 
+###  http://example.com/bronze
+ex:bronze rdf:type owl:NamedIndividual ,
+                   ex:Sculpture_Material ;
+          rdfs:label "Bronze" .
+
+
 ###  http://example.com/city_museum
 ex:city_museum rdf:type owl:NamedIndividual ,
                         ex:Company ;
@@ -157,8 +191,11 @@ ex:david rdf:type owl:NamedIndividual ,
                   ex:Artefact ;
          ex:belongsToHistoricalMovement ex:renaissance ;
          ex:hasArtist ex:michelangelo ;
+         ex:hasSculptureMaterial ex:marble ;
          ex:isExhibitedIn ex:galleria_dell_accademia ;
          ex:soldTo ex:firenze_cultural_fund ;
+         ex:hasEndCreationDate 1504 ;
+         ex:hasStartCreationDate 1501 ;
          rdfs:label "David" .
 
 
@@ -204,6 +241,12 @@ ex:leonardo_da_vinci rdf:type owl:NamedIndividual ,
 ex:louvre rdf:type owl:NamedIndividual ,
                    ex:Premises ;
           rdfs:label "The Louvre Museum" .
+
+
+###  http://example.com/marble
+ex:marble rdf:type owl:NamedIndividual ,
+                   ex:Sculpture_Material ;
+          rdfs:label "Marble" .
 
 
 ###  http://example.com/michelangelo
@@ -266,6 +309,7 @@ ex:sandro_botticelli rdf:type owl:NamedIndividual ,
 
 ###  http://example.com/shellby_arts_ltd
 ex:shellby_arts_ltd rdf:type owl:NamedIndividual ,
+                             ex:Shell_Company ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty ex:hasAddress ;
                                owl:maxCardinality "0"^^xsd:nonNegativeInteger
