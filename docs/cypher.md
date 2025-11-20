@@ -32,7 +32,8 @@ RETURN a.name
 ### Query 1.3
 
 ```
-MATCH ({name:'Renaissance'})<-[:belongsToHistoricalMovement]-(a:Artefact)-[:hasArtist]->({name:'Leonardo Da Vinci'})
+MATCH ({name:'Renaissance'})<-[:belongsToHistoricalMovement]-(a:Artefact)-[:hasArtist]->
+    ({name:'Leonardo Da Vinci'})
 RETURN a.name
 ```
 
