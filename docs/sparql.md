@@ -93,10 +93,9 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX ex: <http://example.com/>
 
-SELECT ?city ?country
+SELECT ?country
 WHERE {
-?city a ex:City .
 ?country a ex:Country .
-ex:david ex:isLocatedIn ?city, ?country .
+ex:david ex:isLocatedIn ?country .
 }
 ```

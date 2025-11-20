@@ -228,6 +228,7 @@ ex:firenze_cultural_fund rdf:type owl:NamedIndividual ,
 ###  http://example.com/florence
 ex:florence rdf:type owl:NamedIndividual ,
                      ex:City ;
+            ex:isLocatedIn ex:italy ;
             rdfs:label "Florence" .
 
 
@@ -299,8 +300,8 @@ ex:mona_lisa rdf:type owl:NamedIndividual ,
 
 ###  http://example.com/mr_MoneyBagss
 ex:mr_MoneyBagss rdf:type owl:NamedIndividual ,
-                         ex:Person ;
-                rdfs:label "Mr. MoneyBagss" .
+                          ex:Person ;
+                 rdfs:label "Mr. MoneyBagss" .
 
 
 ###  http://example.com/musee_dorsay
