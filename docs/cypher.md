@@ -36,7 +36,9 @@ MATCH ({name:'Renaissance'})<-[:belongsToHistoricalMovement]-(a:Artefact)-[:hasA
 RETURN a.name
 ```
 
-## Query 2
+## Section 2
+
+### Query 2
 
 ```
 MATCH (p:Person)-[:owns]->{1,}(intermediary:Company)-[:owns]->{0,}(c:Company)
@@ -48,4 +50,20 @@ WHERE NOT (intermediary)-[:isDomiciledIn]->()
 RETURN p.name, c.name, art.name, domCity.name,
     SUM(e1.exhibitEndDate - e1.exhibitStartDate) /
 SUM(e.exhibitEndDate - e.exhibitStartDate) > 0.5 AS artwork_exhibit_majority_in_domicile
+```
+
+## Section 3
+
+### Query 3.1
+
+```
+MATCH p = (:Person)-[:owns]-{1,}(:Person)
+RETURN p
+```
+
+### Query 3.2
+
+```
+MATCH p = (:Company)--{2,4}()
+RETURN p, length(p)
 ```
