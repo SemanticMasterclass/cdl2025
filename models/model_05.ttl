@@ -92,18 +92,7 @@ ex:Artist rdf:type owl:Class .
 
 
 ###  http://example.com/Company
-ex:Company rdf:type owl:Class ;
-           owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                        owl:onProperty ex:hasAddress ;
-                                                        owl:hasValue "false"^^xsd:boolean
-                                                      ]
-                                                      [ rdf:type owl:Restriction ;
-                                                        owl:onProperty ex:numberOfEmployees ;
-                                                        owl:hasValue 0
-                                                      ]
-                                                    ) ;
-                                 rdf:type owl:Class
-                               ] .
+ex:Company rdf:type owl:Class .
 
 
 ###  http://example.com/Historical_Movement
@@ -126,6 +115,17 @@ ex:Premises rdf:type owl:Class .
 
 ###  http://example.com/Shell_Company
 ex:Shell_Company rdf:type owl:Class ;
+                 owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                              owl:onProperty ex:numberOfEmployees ;
+                                                              owl:hasValue 0
+                                                            ]
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty ex:hasAddress ;
+                                                              owl:maxCardinality "0"^^xsd:nonNegativeInteger
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ;
                  rdfs:subClassOf ex:Company .
 
 
