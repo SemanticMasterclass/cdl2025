@@ -77,3 +77,17 @@ MATCH p = (:Person)-[:owns]->()
 ()-[:isDomiciledIn]->()
 RETURN p
 ```
+
+### Query 3.4
+
+```
+MATCH dodgyPath = (p:Person)-[:owns]->{1,}(intermediary:Company)-[:owns]->{0,}(c:Company)
+-[:owns]->(art:Artefact),
+    	(c)-[:isDomiciledIn]->(domCity:City),
+(art)-[e:isExhibitedIn]->(prem:Premises),
+		(art)-[e1:isExhibitedIn]->(prem1:Premises)-[:isLocatedIn]->(domCity:City)
+WHERE NOT (intermediary)-[:isDomiciledIn]->()
+RETURN dodgyPath, domCity.name,
+    SUM(e1.exhibitEndDate - e1.exhibitStartDate) /
+SUM(e.exhibitEndDate - e.exhibitStartDate) > 0.5 AS artwork_exhibit_majority_in_domicile
+```
