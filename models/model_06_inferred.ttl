@@ -117,11 +117,11 @@ ex:Premises rdf:type owl:Class .
 ex:Shell_Company rdf:type owl:Class ;
                  owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                               owl:onProperty ex:numberOfEmployees ;
-                                                              owl:hasValue "0"^^xsd:integer
+                                                              owl:hasValue 0
                                                             ]
                                                             [ rdf:type owl:Restriction ;
                                                               owl:onProperty ex:hasAddress ;
-                                                              owl:maxCardinality "0"^^xsd:integer
+                                                              owl:maxCardinality "0"^^xsd:nonNegativeInteger
                                                             ]
                                                           ) ;
                                        rdf:type owl:Class
@@ -262,6 +262,17 @@ ex:renaissance rdf:type owl:NamedIndividual ,
 ex:sandro_botticelli rdf:type owl:NamedIndividual ,
                               ex:Artist ;
                      rdfs:label "Sandro Botticelli" .
+
+
+###  http://example.com/shellby_arts_ltd
+ex:shellby_arts_ltd rdf:type owl:NamedIndividual ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty ex:hasAddress ;
+                               owl:maxCardinality "0"^^xsd:nonNegativeInteger
+                             ] ;
+                    ex:numberOfEmployees 0 ;
+                    rdf:type ex:Shell_Company ;
+                    rdfs:label "Shellby Arts Ltd" .
 
 
 ###  http://example.com/starry_night

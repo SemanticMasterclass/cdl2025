@@ -51,9 +51,9 @@ ex:belongsToHistoricalMovement ex:renaissance .
 }
 ```
 
-## Section 2 - Classification
+## Section 2
 
-### Query 2.1
+### Query 2
 
 ```
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -64,11 +64,11 @@ PREFIX ex: <http://example.com/>
 
 SELECT ?x
 WHERE {
-?x a ex:Sculpture .
+?x a ex:Shell_Company .
 }
 ```
 
-### Query 2.2
+### Query
 
 ```
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
