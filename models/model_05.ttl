@@ -115,16 +115,9 @@ ex:Premises rdf:type owl:Class .
 
 ###  http://example.com/Shell_Company
 ex:Shell_Company rdf:type owl:Class ;
-                 owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                              owl:onProperty ex:numberOfEmployees ;
-                                                              owl:hasValue "0"^^xsd:integer
-                                                            ]
-                                                            [ rdf:type owl:Restriction ;
-                                                              owl:onProperty ex:hasAddress ;
-                                                              owl:maxCardinality "0"^^xsd:integer
-                                                            ]
-                                                          ) ;
-                                       rdf:type owl:Class
+                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                       owl:onProperty ex:numberOfEmployees ;
+                                       owl:hasValue 0
                                      ] ;
                  rdfs:subClassOf ex:Company .
 

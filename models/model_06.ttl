@@ -115,16 +115,9 @@ ex:Premises rdf:type owl:Class .
 
 ###  http://example.com/Shell_Company
 ex:Shell_Company rdf:type owl:Class ;
-                 owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                              owl:onProperty ex:numberOfEmployees ;
-                                                              owl:hasValue 0
-                                                            ]
-                                                            [ rdf:type owl:Restriction ;
-                                                              owl:onProperty ex:hasAddress ;
-                                                              owl:maxCardinality "0"^^xsd:nonNegativeInteger
-                                                            ]
-                                                          ) ;
-                                       rdf:type owl:Class
+                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                       owl:onProperty ex:numberOfEmployees ;
+                                       owl:hasValue 0
                                      ] ;
                  rdfs:subClassOf ex:Company .
 
@@ -266,10 +259,6 @@ ex:sandro_botticelli rdf:type owl:NamedIndividual ,
 
 ###  http://example.com/shellby_arts_ltd
 ex:shellby_arts_ltd rdf:type owl:NamedIndividual ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty ex:hasAddress ;
-                               owl:maxCardinality "0"^^xsd:nonNegativeInteger
-                             ] ;
                     ex:numberOfEmployees 0 ;
                     rdfs:label "Shellby Arts Ltd" .
 
