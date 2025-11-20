@@ -215,10 +215,10 @@ ex:mona_lisa rdf:type owl:NamedIndividual ,
              rdfs:label "Mona Lisa" .
 
 
-###  http://example.com/mr_moneybags
-ex:mr_moneybags rdf:type owl:NamedIndividual ,
+###  http://example.com/mr_MoneyBagss
+ex:mr_MoneyBagss rdf:type owl:NamedIndividual ,
                         ex:Person ;
-               rdfs:label "Mr. MoneyBags" .
+               rdfs:label "Mr. MoneyBagss" .
 
 
 ###  http://example.com/musee_dorsay
@@ -289,7 +289,7 @@ ex:the_last_supper rdf:type owl:NamedIndividual ,
                    ex:belongsToHistoricalMovement ex:renaissance ;
                    ex:hasArtist ex:leonardo_da_vinci ;
                    ex:isExhibitedIn ex:louvre ;
-                   ex:soldTo ex:mr_moneybags ;
+                   ex:soldTo ex:mr_MoneyBagss ;
                    rdfs:label "The Last Supper" .
 
 

@@ -203,6 +203,10 @@ ex:claude_monet rdf:type owl:NamedIndividual ,
                 rdfs:label "Claude Monet" .
 
 
+ex:singapore rdf:type owl:NamedIndividual ,
+                  ex:Country ;
+         rdfs:label "Singapore" .
+
 ###  http://example.com/david
 ex:david rdf:type owl:NamedIndividual ,
                   ex:Artefact ,
@@ -212,6 +216,8 @@ ex:david rdf:type owl:NamedIndividual ,
          ex:hasSculptureMaterial ex:marble ;
          ex:isExhibitedIn ex:galleria_dell_accademia ;
          ex:isLocatedIn ex:florence ;
+         ex:isLocatedIn ex:italy ;
+         ex:isLocatedIn ex:singapore ;
          ex:soldTo ex:firenze_cultural_fund ;
          ex:hasEndCreationDate 1504 ;
          ex:hasStartCreationDate 1501 ;
@@ -228,6 +234,7 @@ ex:firenze_cultural_fund rdf:type owl:NamedIndividual ,
 ###  http://example.com/florence
 ex:florence rdf:type owl:NamedIndividual ,
                      ex:City ;
+            ex:isLocatedIn ex:italy ;
             rdfs:label "Florence" .
 
 
@@ -297,10 +304,10 @@ ex:mona_lisa rdf:type owl:NamedIndividual ,
              rdfs:label "Mona Lisa" .
 
 
-###  http://example.com/mr_moneybags
-ex:mr_moneybags rdf:type owl:NamedIndividual ,
+###  http://example.com/mr_MoneyBagss
+ex:mr_MoneyBagss rdf:type owl:NamedIndividual ,
                          ex:Person ;
-                rdfs:label "Mr. MoneyBags" .
+                rdfs:label "Mr. MoneyBagss" .
 
 
 ###  http://example.com/musee_dorsay
@@ -372,7 +379,7 @@ ex:the_last_supper rdf:type owl:NamedIndividual ,
                    ex:belongsToHistoricalMovement ex:renaissance ;
                    ex:hasArtist ex:leonardo_da_vinci ;
                    ex:isExhibitedIn ex:louvre ;
-                   ex:soldTo ex:mr_moneybags ;
+                   ex:soldTo ex:mr_MoneyBagss ;
                    rdfs:label "The Last Supper" .
 
 

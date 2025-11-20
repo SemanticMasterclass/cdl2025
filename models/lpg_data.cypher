@@ -702,11 +702,11 @@ INSERT (mona_lisa)-[:isExhibitedIn {
 // Money laundering example
 // Create Person nodes
 INSERT
- (mr_moneybag:Person {
-   name: 'Mr. MoneyBag'
+ (mr_MoneyBags:Person {
+   name: 'Mr. MoneyBags'
  }),
- (mrs_moneybag:Person {
-   name: 'Mrs. MoneyBag'
+ (mrs_MoneyBags:Person {
+   name: 'Mrs. MoneyBags'
  });
 
 
@@ -727,14 +727,14 @@ INSERT
 
 
 // Create Person-Company relationships
-MATCH (mr_moneybag:Person {name: 'Mr. MoneyBag'}),
+MATCH (mr_MoneyBags:Person {name: 'Mr. MoneyBags'}),
      (blueshell:Company {name: 'Blueshell'})
-INSERT (mr_moneybag)-[:owns]->(blueshell);
+INSERT (mr_MoneyBags)-[:owns]->(blueshell);
 
 
-MATCH (mrs_moneybag:Person {name: 'Mrs. MoneyBag'}),
+MATCH (mrs_MoneyBags:Person {name: 'Mrs. MoneyBags'}),
      (foggy_capital:Company {name: 'Foggy Capital'})
-INSERT (mrs_moneybag)-[:owns]->(foggy_capital);
+INSERT (mrs_MoneyBags)-[:owns]->(foggy_capital);
 
 
 MATCH (blueshell:Company {name: 'Blueshell'}),
@@ -769,9 +769,9 @@ INSERT (salmon_river_holdings)-[:isDomiciledIn]->(oslo);
 
 
 // Create Artwork ownership relationships
-MATCH (mr_moneybag:Person {name: 'Mr. MoneyBag'}),
+MATCH (mr_MoneyBags:Person {name: 'Mr. MoneyBags'}),
      (mona_lisa:Painting {name: 'Mona Lisa'})
-INSERT (mr_moneybag)-[:owns]->(mona_lisa);
+INSERT (mr_MoneyBags)-[:owns]->(mona_lisa);
 
 
 MATCH (foggy_capital:Company {name: 'Foggy Capital'}),
